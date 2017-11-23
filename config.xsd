@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://www.xml.tc/gem"
+        xmlns:tns="http://www.xml.tc/gem">
+
+    <element name="gems">
+        <complexType>
+            <sequence>
+                <element name="gem" type="tns:Gem" minOccurs="1" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+
+
+    <complexType name="Gem">
+        <attribute name="id" type="int" use="required"/>
+        <sequence>
+            <element name="name" type="string"/>
+            <element name="preciousness" type="string"/>
+            <element name="visualParameters" type="tns:Visual"/>
+            <element name="value" type="positiveInteger"/>
+        </sequence>
+    </complexType>
+    <complexType name="Visual">
+        <sequence>
+            <element name="color" type="string"/>
+            <element name="shine" type="string"/>
+            <element name="transparency" type="string"/>
+        </sequence>
+    </complexType>
+
+</schema>
