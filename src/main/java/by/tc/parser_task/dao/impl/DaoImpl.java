@@ -1,6 +1,7 @@
 package by.tc.parser_task.dao.impl;
 
 import by.tc.parser_task.dao.ParseDAO;
+import by.tc.parser_task.dao.action.DomParser;
 import by.tc.parser_task.dao.action.SaxParser;
 import by.tc.parser_task.dao.action.StaxParser;
 import by.tc.parser_task.entity.Gem;
@@ -43,6 +44,8 @@ public class DaoImpl implements ParseDAO {
 
     @Override
     public List<Gem> parseDOM() {
-        return null;
+        DomParser parser = new DomParser();
+        parser.buildListOfGems("myXml.xml");
+        return parser.getGems();
     }
 }

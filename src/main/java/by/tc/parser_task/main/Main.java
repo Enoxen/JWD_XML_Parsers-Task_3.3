@@ -26,8 +26,8 @@ public class Main {
 //            e.printStackTrace();
 //        }
 
-            List<Gem> gems = parseDao.parseStax();
-            System.out.println(gems.get(3).getName());
+            List<Gem> gems = parseDao.parseDOM();
+            System.out.println(gems);
 
 
 
