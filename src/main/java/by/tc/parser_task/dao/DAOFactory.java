@@ -14,7 +14,7 @@ public class DAOFactory {
 
     private DAOFactory(){}
 
-    public ParseDAO getUserDao(){
+    public ParseDAO getParseDao(){
         return parseDao;
     }
     public static DAOFactory getInstance(){

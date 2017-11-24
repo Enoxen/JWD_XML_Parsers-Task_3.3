@@ -12,10 +12,10 @@ import java.util.List;
  */
 public class SaxParse implements Command {
     @Override
-    public void execute(String command) {
-        List<Gem> parsedGem;
+    public List<Gem> execute() {
+
         ServiceFactory factory = ServiceFactory.getInstance();
         ParseService parseService = factory.getParseService();
-        parseService.parseSax();
+        return parseService.parseSax();
     }
 }
