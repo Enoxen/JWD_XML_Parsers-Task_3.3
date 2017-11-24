@@ -11,4 +11,5 @@ public interface ParseService {
     List<Gem> parseSax();
     List<Gem> parseStax();
     List<Gem> parseDOM();
+    List<Gem> getGems();
 }

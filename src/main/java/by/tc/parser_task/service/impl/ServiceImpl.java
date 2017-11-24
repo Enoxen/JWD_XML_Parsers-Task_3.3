@@ -14,12 +14,15 @@ import java.util.List;
  * Created by Y50-70 on 22.11.2017.
  */
 public class ServiceImpl implements ParseService {
+    private List<Gem> gems;
+
     @Override
     public List<Gem> parseSax()  {
         try {
             DAOFactory factory = DAOFactory.getInstance();
             ParseDAO parse = factory.getParseDao();
-            return parse.parseSax();
+            gems = parse.parseSax();
+            return gems;
         }
         catch (SAXException e){
             e.printStackTrace();
@@ -33,9 +36,10 @@ public class ServiceImpl implements ParseService {
     @Override
     public List<Gem> parseStax() {
 
-            DAOFactory factory = DAOFactory.getInstance();
-            ParseDAO parse = factory.getParseDao();
-            return parse.parseStax();
+        DAOFactory factory = DAOFactory.getInstance();
+        ParseDAO parse = factory.getParseDao();
+        gems = parse.parseStax();
+        return gems;
 
     }
 
@@ -44,6 +48,10 @@ public class ServiceImpl implements ParseService {
 
         DAOFactory factory = DAOFactory.getInstance();
         ParseDAO parse = factory.getParseDao();
-        return parse.parseDOM();
+        gems = parse.parseDOM();
+        return gems;
+    }
+    public List<Gem> getGems(){
+        return gems;
     }
 }

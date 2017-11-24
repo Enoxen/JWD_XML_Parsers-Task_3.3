@@ -1,5 +1,4 @@
 package by.tc.parser_task.controller.command.help;
-
 import by.tc.parser_task.controller.command.Command;
 import by.tc.parser_task.entity.Gem;
 import by.tc.parser_task.service.ParseService;
@@ -9,16 +8,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
+
 /**
- * Created by Y50-70 on 22.11.2017.
+ * Created by Y50-70 on 24.11.2017.
  */
-public class SaxParse implements Command {
+public class OutputHelper implements Command {
+
     @Override
     public List<Gem> execute(HttpServletRequest request, HttpServletResponse response) {
-
         ServiceFactory factory = ServiceFactory.getInstance();
         ParseService parseService = factory.getParseService();
 
-        return parseService.parseSax();
+        return null;
     }
 }
