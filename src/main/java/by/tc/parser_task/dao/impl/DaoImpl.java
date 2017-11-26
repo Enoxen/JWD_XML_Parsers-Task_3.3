@@ -4,6 +4,7 @@ import by.tc.parser_task.dao.ParseDAO;
 import by.tc.parser_task.dao.action.DomParser;
 import by.tc.parser_task.dao.action.SaxParser;
 import by.tc.parser_task.dao.action.StaxParser;
+import by.tc.parser_task.dao.constant.FilePath;
 import by.tc.parser_task.entity.Gem;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -26,7 +27,8 @@ public class DaoImpl implements ParseDAO {
             XMLReader reader = XMLReaderFactory.createXMLReader();
             SaxParser handler = new SaxParser();
             reader.setContentHandler(handler);
-            reader.parse(new InputSource("myXml.xml"));
+            reader.parse(new InputSource(FilePath.FILE_PATH));
+            List<Gem> gems = handler.getGems();
             return handler.getGems();
         }
         catch (SAXException e){
@@ -37,7 +39,7 @@ public class DaoImpl implements ParseDAO {
     @Override
     public List<Gem> parseStax() {
         StaxParser parser = new StaxParser();
-        parser.buildListOfGems("myXml.xml");
+        parser.buildListOfGems(FilePath.FILE_PATH);
 
         return parser.getGems();
     }
@@ -45,7 +47,7 @@ public class DaoImpl implements ParseDAO {
     @Override
     public List<Gem> parseDOM() {
         DomParser parser = new DomParser();
-        parser.buildListOfGems("myXml.xml");
+        parser.buildListOfGems(FilePath.FILE_PATH);
         return parser.getGems();
     }
 }

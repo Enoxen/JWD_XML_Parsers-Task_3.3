@@ -4,6 +4,9 @@ import by.tc.parser_task.dao.DAOFactory;
 import by.tc.parser_task.dao.ParseDAO;
 
 import by.tc.parser_task.entity.Gem;
+import org.xml.sax.SAXException;
+
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -11,22 +14,20 @@ import java.util.List;
  */
 public class Main {
     public static void main(String[] args){
-       /* DAOFactory instance = DAOFactory.getInstance();
-        ParseDAO parseDao = instance.getUserDao();
-//        try {
-//            List<Gem> gems = parseDao.parseSax();
-//            System.out.println(gems);
-//        }catch (SAXException e){
-//            e.printStackTrace();
-//        }
-//        catch (IOException e){
-//            e.printStackTrace();
-//        }
-
-            List<Gem> gems = parseDao.parseDOM();
+        DAOFactory instance = DAOFactory.getInstance();
+        ParseDAO parseDao = instance.getParseDao();
+        try {
+            List<Gem> gems = parseDao.parseSax();
             System.out.println(gems);
+        }catch (SAXException e){
+            e.printStackTrace();
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
 
-*/
+
+
 
     }
 }

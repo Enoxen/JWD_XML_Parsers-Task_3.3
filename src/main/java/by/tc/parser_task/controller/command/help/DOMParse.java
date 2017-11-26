@@ -1,6 +1,7 @@
 package by.tc.parser_task.controller.command.help;
 
 import by.tc.parser_task.controller.command.Command;
+import by.tc.parser_task.controller.constant.AttributeKey;
 import by.tc.parser_task.controller.output.PaginationHelper;
 import by.tc.parser_task.entity.Gem;
 import by.tc.parser_task.service.ParseService;
@@ -23,7 +24,7 @@ public class DOMParse implements Command {
         ParseService parseService = factory.getParseService();
         HttpSession session = request.getSession(false);
         List<Gem> parsedGems = parseService.parseDOM();
-        session.setAttribute("all_gems", parsedGems);
+        session.setAttribute(AttributeKey.ALL_GEMS, parsedGems);
         PaginationHelper pagination = new PaginationHelper();
         return pagination.firstOutput(parsedGems);
     }

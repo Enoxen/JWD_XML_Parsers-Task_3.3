@@ -1,6 +1,9 @@
 package by.tc.parser_task.controller;
 
 import by.tc.parser_task.controller.command.CommandDirector;
+import by.tc.parser_task.controller.constant.AttributeKey;
+import by.tc.parser_task.controller.constant.CommandConstant;
+import by.tc.parser_task.controller.constant.JspPath;
 import by.tc.parser_task.controller.output.PaginationHelper;
 import by.tc.parser_task.entity.Gem;
 
@@ -17,16 +20,15 @@ import java.util.List;
  */
 public class FrontController extends HttpServlet {
     private CommandDirector director = new CommandDirector();
-    PaginationHelper pagination = new PaginationHelper();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         List<Gem> gems;
-        String command = request.getParameter("command");
+        String command = request.getParameter(CommandConstant.COMMAND);
 
         gems = director.getCommand(command).execute(request, response);
 
-        request.setAttribute("gems", gems);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/output.jsp");
+        request.setAttribute(AttributeKey.GEMS, gems);
+        RequestDispatcher dispatcher = request.getRequestDispatcher(JspPath.OUTPUT_PAGE);
         dispatcher.forward(request, response);
     }
 

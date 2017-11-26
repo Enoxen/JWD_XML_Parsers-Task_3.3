@@ -1,5 +1,7 @@
 package by.tc.parser_task.controller.command.help;
 import by.tc.parser_task.controller.command.Command;
+import by.tc.parser_task.controller.constant.AttributeKey;
+import by.tc.parser_task.controller.constant.CommandConstant;
 import by.tc.parser_task.controller.output.PaginationFactory;
 import by.tc.parser_task.controller.output.PaginationHelper;
 import by.tc.parser_task.entity.Gem;
@@ -25,22 +27,18 @@ public class ChangePage implements Command {
         PaginationHelper helper = factory.getPaginationHelper();
         HttpSession session = request.getSession();
         if(helper.getGems() == null) {
-            List<Gem> gems = (List<Gem>) session.getAttribute("all_gems");
+            List<Gem> gems = (List<Gem>) session.getAttribute(AttributeKey.ALL_GEMS);
             System.out.println(gems);
             helper.setPagination(gems);
         }
-        if(request.getParameter("command").equals("DOWN")){
+        if(request.getParameter(CommandConstant.COMMAND).equals(CommandConstant.DOWN)){
             return helper.nextPageOutput();
         }
         else{
-            if(request.getParameter("command").equals("UP")){
+            if(request.getParameter(CommandConstant.COMMAND).equals(CommandConstant.UP)){
                return helper.previousPageOutput();
             }
         }
-
     return null;
     }
-
-
-
 }

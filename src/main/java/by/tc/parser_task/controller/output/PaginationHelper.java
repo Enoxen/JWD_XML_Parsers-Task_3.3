@@ -33,22 +33,17 @@ public class PaginationHelper {
     }
     public List<Gem> nextPageOutput(){
         List<Gem> sublist;
-        System.out.println(gems.size()+ " size");
         if(end + gemsPerPage > gemsCount && start + gemsPerPage < gemsCount){
             start = (start + gemsPerPage)%gemsCount;
-            System.out.println(start);
             sublist = new ArrayList<>();
             sublist.addAll(gems.subList(start, gemsCount));
             end = (end + gemsPerPage) % gemsCount;
-            System.out.println(end);
             sublist.addAll(gems.subList(0, end));
             return sublist;
         }
         else {
             start = (start + gemsPerPage)%gemsCount;
             end = (end + gemsPerPage == gemsCount) ? (end + gemsPerPage) :((end + gemsPerPage) % gemsCount);
-            System.out.println(start);
-            System.out.println(end);
             return gems.subList(start, end);
         }
     }
@@ -57,12 +52,8 @@ public class PaginationHelper {
         if(start - gemsPerPage < 0 && end - gemsPerPage >=0){
             sublist = new ArrayList<>();
             start = Math.floorMod(start - gemsPerPage, gemsCount);
-            System.out.println(start);
             end = Math.floorMod(end - gemsPerPage, gemsCount) == 0 ? gemsCount : Math.floorMod(end - gemsPerPage, gemsCount);
-            System.out.println(end);
             sublist.addAll(gems.subList(start, end));
-
-            //sublist.addAll(gems.subList(0,end));
             return sublist;
         }
         else{

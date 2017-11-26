@@ -1,5 +1,6 @@
 package by.tc.parser_task.dao.action;
 
+import by.tc.parser_task.dao.constant.TagName;
 import by.tc.parser_task.entity.Gem;
 
 import javax.xml.stream.XMLInputFactory;
@@ -39,7 +40,7 @@ public class StaxParser {
                 int type = reader.next();
                 if(type == XMLStreamConstants.START_ELEMENT){
                     name = reader.getLocalName();
-                    if(name.equals("gem")){
+                    if(name.equals(TagName.GEM)){
                         Gem gem = buildGem(reader);
                         gems.add(gem);
                     }
@@ -65,7 +66,7 @@ public class StaxParser {
     }
     private Gem buildGem(XMLStreamReader reader) throws XMLStreamException{
         Gem gem = new Gem();
-        gem.setId(Integer.parseInt(reader.getAttributeValue(null, "id")));
+        gem.setId(Integer.parseInt(reader.getAttributeValue(null, TagName.ID)));
         String name;
         while(reader.hasNext()){
             int type = reader.next();
@@ -73,22 +74,22 @@ public class StaxParser {
                 case XMLStreamConstants.START_ELEMENT:
                     name = reader.getLocalName();
                     switch (name){
-                        case "name":
+                        case TagName.NAME:
                             gem.setName(getXMLText(reader)); break;
-                        case "preciousness":
+                        case TagName.PRECIOUSNESS:
                             gem.setPreciousness(getXMLText(reader)); break;
-                        case "color":
+                        case TagName.COLOR:
                             gem.setColor(getXMLText(reader)); break;
-                        case "shine":
+                        case TagName.SHINE:
                             gem.setShine(getXMLText(reader)); break;
-                        case "transparency":
+                        case TagName.TRANSPARENCY:
                             gem.setTransparency(getXMLText(reader)); break;
-                        case "value":
+                        case TagName.VALUE:
                             gem.setValue(Float.parseFloat(getXMLText(reader))); break;
                     } break;
                 case XMLStreamConstants.END_ELEMENT:
                     name = reader.getLocalName();
-                    if(name.equals("gem")){
+                    if(name.equals(TagName.GEM)){
                         return gem;
                     }
                     break;

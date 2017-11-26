@@ -1,6 +1,8 @@
 package by.tc.parser_task.controller.command.help;
 
 import by.tc.parser_task.controller.command.Command;
+import by.tc.parser_task.controller.constant.AttributeKey;
+import by.tc.parser_task.controller.output.PaginationFactory;
 import by.tc.parser_task.controller.output.PaginationHelper;
 import by.tc.parser_task.entity.Gem;
 import by.tc.parser_task.service.ParseService;
@@ -22,14 +24,14 @@ public class SaxParse implements Command {
 
         ServiceFactory factory = ServiceFactory.getInstance();
         ParseService parseService = factory.getParseService();
-        HttpSession session = request.getSession(false);
-        session.invalidate();
-        List<Gem> parsedGems = parseService.parseSax();
-        System.out.println(parsedGems.size());
-        session = request.getSession(true);
-        session.setAttribute("all_gems", parsedGems);
+        PaginationFactory paginationFactory = PaginationFactory.getInstance();
 
-        PaginationHelper pagination = new PaginationHelper();
+        HttpSession session = request.getSession(false);
+        List<Gem> parsedGems = parseService.parseSax();
+
+        System.out.println("GOVNO" + parsedGems.size());
+        session.setAttribute(AttributeKey.ALL_GEMS, parsedGems);
+        PaginationHelper pagination = paginationFactory.getPaginationHelper();
         return pagination.firstOutput(parsedGems);
     }
 }

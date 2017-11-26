@@ -1,5 +1,6 @@
 package by.tc.parser_task.dao.action;
 
+import by.tc.parser_task.dao.constant.TagName;
 import by.tc.parser_task.entity.Gem;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
@@ -35,9 +36,9 @@ public class SaxParser extends DefaultHandler {
     @Override
     public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException{
         text = new StringBuilder();
-        if(qName.equals("gem")){
+        if(qName.equals(TagName.NAME)){
             gem = new Gem();
-            gem.setId(Integer.parseInt(attributes.getValue("id")));
+            gem.setId(Integer.parseInt(attributes.getValue(TagName.ID)));
         }
     }
 
@@ -49,19 +50,19 @@ public class SaxParser extends DefaultHandler {
     @Override
     public void endElement(String uri, String localName, String qName)throws SAXException{
         switch (qName){
-            case "name":
+            case TagName.NAME:
                 gem.setName(text.toString()); break;
-            case "preciousness":
+            case TagName.PRECIOUSNESS:
                 gem.setPreciousness(text.toString()); break;
-            case "color":
+            case TagName.COLOR:
                 gem.setColor(text.toString()); break;
-            case "shine":
+            case TagName.SHINE:
                 gem.setShine(text.toString()); break;
-            case "transparency":
+            case TagName.TRANSPARENCY:
                 gem.setTransparency(text.toString()); break;
-            case "value":
+            case TagName.VALUE:
                 gem.setValue(Float.parseFloat(text.toString())); break;
-            case "gem":
+            case TagName.GEM:
                 gems.add(gem);
                 gem = null;
                 break;

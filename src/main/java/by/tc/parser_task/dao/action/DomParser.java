@@ -1,5 +1,6 @@
 package by.tc.parser_task.dao.action;
 
+import by.tc.parser_task.dao.constant.TagName;
 import by.tc.parser_task.entity.Gem;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -42,7 +43,7 @@ public class DomParser {
             doc = docBuilder.parse(filename);
             Element root = doc.getDocumentElement();
 
-            NodeList gemsList = root.getElementsByTagName("gem");
+            NodeList gemsList = root.getElementsByTagName(TagName.GEM);
             for(int i = 0; i < gemsList.getLength(); i++){
                 Element gemElem = (Element)gemsList.item(i);
                 Gem gem = buildGem(gemElem);
@@ -58,13 +59,13 @@ public class DomParser {
     }
     private Gem buildGem(Element gemElement){
         Gem gem = new Gem();
-        gem.setId(Integer.parseInt(gemElement.getAttribute("id")));
-        gem.setName(getElementTextContent(gemElement,"name"));
-        gem.setPreciousness(getElementTextContent(gemElement,"preciousness"));
-        gem.setColor(getElementTextContent(gemElement,"color"));
-        gem.setShine(getElementTextContent(gemElement,"shine"));
-        gem.setTransparency(getElementTextContent(gemElement,"transparency"));
-        gem.setValue(Float.parseFloat(getElementTextContent(gemElement,"value")));
+        gem.setId(Integer.parseInt(gemElement.getAttribute(TagName.ID)));
+        gem.setName(getElementTextContent(gemElement,TagName.NAME));
+        gem.setPreciousness(getElementTextContent(gemElement,TagName.PRECIOUSNESS));
+        gem.setColor(getElementTextContent(gemElement,TagName.COLOR));
+        gem.setShine(getElementTextContent(gemElement,TagName.SHINE));
+        gem.setTransparency(getElementTextContent(gemElement,TagName.TRANSPARENCY));
+        gem.setValue(Float.parseFloat(getElementTextContent(gemElement,TagName.VALUE)));
         return gem;
     }
     private String getElementTextContent(Element element, String elementName ){
