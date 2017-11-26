@@ -1,9 +1,7 @@
 package by.tc.parser_task.dao;
 
-import by.tc.parser_task.entity.Gem;
 import by.tc.parser_task.dao.impl.DaoImpl;
 
-import java.util.List;
 
 /**
  * Created by Y50-70 on 22.11.2017.

@@ -1,8 +1,6 @@
 package by.tc.parser_task.controller.command;
 
-import by.tc.parser_task.controller.command.help.DOMParse;
-import by.tc.parser_task.controller.command.help.SaxParse;
-import by.tc.parser_task.controller.command.help.StaxParse;
+import by.tc.parser_task.controller.command.help.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -17,6 +15,9 @@ public class CommandDirector {
         map.put("SAX", new SaxParse());
         map.put("STAX", new StaxParse());
         map.put("DOM", new DOMParse());
+        map.put("main", new MainPage());
+        map.put("UP", new ChangePage());
+        map.put("DOWN", new ChangePage());
     }
 
     public Command getCommand(String commandType){

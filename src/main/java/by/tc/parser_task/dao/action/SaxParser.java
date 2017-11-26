@@ -34,8 +34,6 @@ public class SaxParser extends DefaultHandler {
 
     @Override
     public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException{
-        System.out.println("start element->" +  "uri: " + uri + ", local name: " +
-                localName + ", qName:" + qName);
         text = new StringBuilder();
         if(qName.equals("gem")){
             gem = new Gem();

@@ -20,14 +20,14 @@
     <title>Gems</title>
 </head>
 <body>
-    <form action="FrontController">
         <c:if test="${requestScope.gems != null}">
             <div class="form">
-                <input type="submit" name="swipe" value="&uarr;">
-
+                <form>
+                    <input type="submit" name="command" value="UP">
+                </form>
                 <table border="1">
                     <tr>
-                        <td></td>
+                        <td>Камушек</td>
                         <td>Название</td>
                         <td>Драгоценность</td>
                         <td>Цвет</td>
@@ -37,7 +37,7 @@
                     </tr>
                     <c:forEach var="item" items="${requestScope.gems}">
                         <tr>
-                            <td>gem № ${item.id}</td>
+                            <td>${item.id}</td>
                             <td>${item.name}</td>
                             <td>${item.preciousness}</td>
                             <td>${item.color}</td>
@@ -47,9 +47,10 @@
                         </tr>
                     </c:forEach>
                 </table>
-                <input type="submit" name="swipe" value="&darr;">
+                <form action="FrontController">
+                    <input type="submit" name="command" value="DOWN">
+                </form>
             </div>
             </c:if>
-    </form>
-</body>
+    </body>
 </html>

@@ -16,17 +16,9 @@
 <body>
     <div class="form">
         <form action="FrontController" method="get">
-            <input type="submit" name="command" value="SAX" >
-            <br>
-            <br>
-            <br>
-            <br>
-            <input type="submit" name="command" value="STAX">
-            <br>
-            <br>
-            <br>
-            <br>
-            <input type="submit" name="command" value="DOM">
+            <h1>Чо пацаны, парсинг?</h1>
+            <input type="hidden" name="command" value="main">
+            <input type="submit" name="toMainPage" value="КОНЕЧНО">
         </form>
     </div>
 </body>
