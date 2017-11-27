@@ -2,6 +2,8 @@ package by.tc.parser_task.dao.action;
 
 import by.tc.parser_task.dao.constant.TagName;
 import by.tc.parser_task.entity.Gem;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -21,7 +23,7 @@ import java.util.List;
 public class DomParser {
     private List<Gem> gems;
     private DocumentBuilder docBuilder;
-
+    private static final Logger logger = LogManager.getLogger(StaxParser.class);
     public DomParser(){
         this.gems = new ArrayList<>();
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -38,6 +40,7 @@ public class DomParser {
     }
 
     public void buildListOfGems(String filename){
+        logger.info("Started DOM parsing");
         Document doc = null;
         try{
             doc = docBuilder.parse(filename);

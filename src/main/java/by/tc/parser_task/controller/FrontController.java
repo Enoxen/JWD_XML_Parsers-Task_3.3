@@ -4,7 +4,6 @@ import by.tc.parser_task.controller.command.CommandDirector;
 import by.tc.parser_task.controller.constant.AttributeKey;
 import by.tc.parser_task.controller.constant.CommandConstant;
 import by.tc.parser_task.controller.constant.JspPath;
-import by.tc.parser_task.controller.output.PaginationHelper;
 import by.tc.parser_task.entity.Gem;
 
 import javax.servlet.RequestDispatcher;

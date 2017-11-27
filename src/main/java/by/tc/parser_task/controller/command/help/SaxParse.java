@@ -29,7 +29,6 @@ public class SaxParse implements Command {
         HttpSession session = request.getSession(false);
         List<Gem> parsedGems = parseService.parseSax();
 
-        System.out.println("GOVNO" + parsedGems.size());
         session.setAttribute(AttributeKey.ALL_GEMS, parsedGems);
         PaginationHelper pagination = paginationFactory.getPaginationHelper();
         return pagination.firstOutput(parsedGems);

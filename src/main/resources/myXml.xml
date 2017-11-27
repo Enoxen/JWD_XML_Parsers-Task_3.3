@@ -44,13 +44,143 @@
         <value>14</value>
     </gem>
     <gem id="5">
-        <name>рлоыра</name>
-        <preciousness>ыав</preciousness>
+        <name>Гранат</name>
+        <preciousness>Полудрагоценный</preciousness>
         <visualParameters>
-            <color>проп</color>
-            <shine>нук</shine>
-            <transparency>олдо</transparency>
+            <color>Красный</color>
+            <shine>Стеклянный</shine>
+            <transparency>Прозрачный</transparency>
+        </visualParameters>
+        <value>14</value>
+    </gem>
+    <gem id="6">
+        <name>Аметист</name>
+        <preciousness>Полудрагоценный</preciousness>
+        <visualParameters>
+            <color>Фиолетовый</color>
+            <shine>Стеклянный, перламутровый</shine>
+            <transparency>Прозрачный</transparency>
+        </visualParameters>
+        <value>9</value>
+    </gem>
+    <gem id="7">
+        <name>Рубин</name>
+        <preciousness>Драгоценный</preciousness>
+        <visualParameters>
+            <color>Красный</color>
+            <shine>Стеклянный</shine>
+            <transparency>Прозрачный</transparency>
+        </visualParameters>
+        <value>15</value>
+    </gem>
+    <gem id="8">
+        <name>Алмаз</name>
+        <preciousness>Драгоценный</preciousness>
+        <visualParameters>
+            <color>Бесцветный</color>
+            <shine>Алмазный</shine>
+            <transparency>Прозрачный</transparency>
         </visualParameters>
         <value>10</value>
+    </gem>
+    <gem id="9">
+        <name>Рубин</name>
+        <preciousness>Драгоценный</preciousness>
+        <visualParameters>
+            <color>Красный</color>
+            <shine>Стеклянный</shine>
+            <transparency>Прозрачный</transparency>
+        </visualParameters>
+        <value>15</value>
+    </gem>
+    <gem id="10">
+        <name>Аметист</name>
+        <preciousness>Полудрагоценный</preciousness>
+        <visualParameters>
+            <color>Фиолетовый</color>
+            <shine>Стеклянный, перламутровый</shine>
+            <transparency>Прозрачный</transparency>
+        </visualParameters>
+        <value>9</value>
+    </gem>
+    <gem id="11">
+        <name>Гранат</name>
+        <preciousness>Полудрагоценный</preciousness>
+        <visualParameters>
+            <color>Красный</color>
+            <shine>Стеклянный</shine>
+            <transparency>Прозрачный</transparency>
+        </visualParameters>
+        <value>14</value>
+    </gem>
+    <gem id="12">
+        <name>Гранат</name>
+        <preciousness>Полудрагоценный</preciousness>
+        <visualParameters>
+            <color>Красный</color>
+            <shine>Стеклянный</shine>
+            <transparency>Прозрачный</transparency>
+        </visualParameters>
+        <value>14</value>
+    </gem>
+    <gem id="13">
+        <name>Аметист</name>
+        <preciousness>Полудрагоценный</preciousness>
+        <visualParameters>
+            <color>Фиолетовый</color>
+            <shine>Стеклянный, перламутровый</shine>
+            <transparency>Прозрачный</transparency>
+        </visualParameters>
+        <value>9</value>
+    </gem>
+    <gem id="14">
+        <name>Гранат</name>
+        <preciousness>Полудрагоценный</preciousness>
+        <visualParameters>
+            <color>Красный</color>
+            <shine>Стеклянный</shine>
+            <transparency>Прозрачный</transparency>
+        </visualParameters>
+        <value>14</value>
+    </gem>
+    <gem id="15">
+        <name>Гранат</name>
+        <preciousness>Полудрагоценный</preciousness>
+        <visualParameters>
+            <color>Красный</color>
+            <shine>Стеклянный</shine>
+            <transparency>Прозрачный</transparency>
+        </visualParameters>
+        <value>14</value>
+    </gem>
+    <gem id="16">
+        <name>Аметист</name>
+        <preciousness>Полудрагоценный</preciousness>
+        <visualParameters>
+            <color>Фиолетовый</color>
+            <shine>Стеклянный, перламутровый</shine>
+            <transparency>Прозрачный</transparency>
+        </visualParameters>
+        <value>9</value>
+    </gem>
+    <gem id="17">
+        <name>Алмаз</name>
+        <preciousness>Драгоценный</preciousness>
+        <visualParameters>
+            <color>Бесцветный</color>
+            <shine>Алмазный</shine>
+            <transparency>Прозрачный</transparency>
+        </visualParameters>
+        <value>10</value>
+    </gem>
+    <gem id="18">
+        <name>Рубин</name>
+        <preciousness>Драгоценный</preciousness>
+        <visualParameters>
+            <color>Красный</color>
+            <shine>Стеклянный</shine>
+            <transparency>Прозрачный</transparency>
+        </visualParameters>
+        <value>15</value>
     </gem>
 </tc:gems>

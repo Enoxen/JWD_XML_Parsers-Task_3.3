@@ -20,7 +20,6 @@ public class ServiceImpl implements ParseService {
             DAOFactory factory = DAOFactory.getInstance();
             ParseDAO parse = factory.getParseDao();
             List<Gem> gems = parse.parseSax();
-            System.out.println(gems.size() + "service");
             return gems;
         }
         catch (SAXException e){

@@ -28,7 +28,6 @@ public class DaoImpl implements ParseDAO {
             SaxParser handler = new SaxParser();
             reader.setContentHandler(handler);
             reader.parse(new InputSource(FilePath.FILE_PATH));
-            List<Gem> gems = handler.getGems();
             return handler.getGems();
         }
         catch (SAXException e){
@@ -40,7 +39,6 @@ public class DaoImpl implements ParseDAO {
     public List<Gem> parseStax() {
         StaxParser parser = new StaxParser();
         parser.buildListOfGems(FilePath.FILE_PATH);
-
         return parser.getGems();
     }
 

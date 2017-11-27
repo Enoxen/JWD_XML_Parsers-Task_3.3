@@ -36,7 +36,7 @@ public class SaxParser extends DefaultHandler {
     @Override
     public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException{
         text = new StringBuilder();
-        if(qName.equals(TagName.NAME)){
+        if(qName.equals(TagName.GEM)){
             gem = new Gem();
             gem.setId(Integer.parseInt(attributes.getValue(TagName.ID)));
         }

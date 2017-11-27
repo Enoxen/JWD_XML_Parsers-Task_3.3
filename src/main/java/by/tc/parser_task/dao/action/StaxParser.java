@@ -3,6 +3,7 @@ package by.tc.parser_task.dao.action;
 import by.tc.parser_task.dao.constant.TagName;
 import by.tc.parser_task.entity.Gem;
 
+
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamException;
@@ -13,6 +14,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * Created by Y50-70 on 22.11.2017.
@@ -20,6 +23,8 @@ import java.util.List;
 public class StaxParser {
     private List<Gem> gems = new ArrayList<>();
     private XMLInputFactory inputFactory;
+   // private static final Logger Logger = LogManager.getLogger(MenuStAXParser.class);
+    private static final Logger logger = LogManager.getLogger(StaxParser.class);
 
     public StaxParser(){
         inputFactory = XMLInputFactory.newInstance();
@@ -29,9 +34,11 @@ public class StaxParser {
         return gems;
     }
     public void buildListOfGems(String filename){
+        logger.info("Started StAX parsing");
         FileInputStream inputStream = null;
         XMLStreamReader reader = null;
         String name;
+
         try{
             inputStream = new FileInputStream(new File(filename));
             reader = inputFactory.createXMLStreamReader(inputStream);
@@ -46,7 +53,9 @@ public class StaxParser {
                     }
                 }
             }
+            logger.info("Ended StAX parsing");
         }
+
         catch (XMLStreamException e){
             e.printStackTrace();
         }
@@ -66,7 +75,7 @@ public class StaxParser {
     }
     private Gem buildGem(XMLStreamReader reader) throws XMLStreamException{
         Gem gem = new Gem();
-        gem.setId(Integer.parseInt(reader.getAttributeValue(null, TagName.ID)));
+        gem.setId(Integer.parseInt(reader.getAttributeValue(null,TagName.ID)));
         String name;
         while(reader.hasNext()){
             int type = reader.next();
