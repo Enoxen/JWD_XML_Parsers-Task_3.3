@@ -52,9 +52,7 @@ public class PaginationHelper {
         if(start - gemsPerPage < 0 && end - gemsPerPage >0){
             sublist = new ArrayList<>();
             start = Math.floorMod(start - gemsPerPage, gemsCount);
-            System.out.println(start + "start");
             end = Math.floorMod(end - gemsPerPage, gemsCount) == 0 ? gemsCount : Math.floorMod(end - gemsPerPage, gemsCount);
-            System.out.println(end + "end");
             sublist.addAll(gems.subList(start, gemsCount));
             sublist.addAll(gems.subList(0,end));
             return sublist;
@@ -62,8 +60,6 @@ public class PaginationHelper {
         else{
             start = Math.floorMod(start - gemsPerPage, gemsCount);
             end = Math.floorMod(end - gemsPerPage, gemsCount) == 0 ? gemsCount : Math.floorMod(end - gemsPerPage, gemsCount);
-            System.out.println(start + "start");
-            System.out.println(end + "end");
             return gems.subList(start, end);
         }
     }

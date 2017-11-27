@@ -28,7 +28,6 @@ public class ChangePage implements Command {
         HttpSession session = request.getSession();
         if(helper.getGems() == null) {
             List<Gem> gems = (List<Gem>) session.getAttribute(AttributeKey.ALL_GEMS);
-            System.out.println(gems);
             helper.setPagination(gems);
         }
         if(request.getParameter(CommandConstant.COMMAND).equals(CommandConstant.DOWN)){
