@@ -22,22 +22,10 @@ public class StaxParse implements Command {
     public List<Gem> execute(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
         ServiceFactory factory = ServiceFactory.getInstance();
         ParseService parseService = factory.getParseService();
-
-        Gem gem = new Gem();
-        gem.setValue(10);
-        gem.setColor("blue");
-        gem.setTransparency("sdf");
-        gem.setPreciousness("sdfsd");
-        gem.setShine("fghfgh");
-        gem.setId(5);
-        gem.setName("fg");
-
         HttpSession session = request.getSession();
         List<Gem> parsedGems = parseService.parseStax();
-        parsedGems.add(gem);
         session.setAttribute(AttributeKey.ALL_GEMS, parsedGems);
         PaginationHelper pagination = new PaginationHelper();
         return pagination.firstOutput(parsedGems);
-
     }
 }

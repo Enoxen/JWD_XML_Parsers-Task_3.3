@@ -43,4 +43,14 @@
         </visualParameters>
         <value>14</value>
     </gem>
+    <gem id="5">
+        <name>рлоыра</name>
+        <preciousness>ыав</preciousness>
+        <visualParameters>
+            <color>проп</color>
+            <shine>нук</shine>
+            <transparency>олдо</transparency>
+        </visualParameters>
+        <value>10</value>
+    </gem>
 </tc:gems>
