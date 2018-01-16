@@ -5,7 +5,9 @@ import by.tc.parser_task.dao.action.DomParser;
 import by.tc.parser_task.dao.action.SaxParser;
 import by.tc.parser_task.dao.action.StaxParser;
 import by.tc.parser_task.dao.constant.FilePath;
+import by.tc.parser_task.dao.exception.ParseException;
 import by.tc.parser_task.entity.Gem;
+import by.tc.parser_task.dao.exception.DAOException;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
@@ -22,30 +24,41 @@ import java.util.List;
 public class DaoImpl implements ParseDAO {
 
     @Override
-    public List<Gem> parseSax() throws SAXException, IOException {
+    public List<Gem> parseSax() throws DAOException {
         try {
             XMLReader reader = XMLReaderFactory.createXMLReader();
             SaxParser handler = new SaxParser();
             reader.setContentHandler(handler);
             reader.parse(new InputSource(FilePath.FILE_PATH));
             return handler.getGems();
+        } catch (IOException e) {
+            throw new DAOException("проблемы с файлом",e);
+        } catch (SAXException e) {
+            throw new DAOException("проблемы с SAX парсером",e);
         }
-        catch (SAXException e){
-            e.printStackTrace();
-        }
-        return null;
     }
     @Override
-    public List<Gem> parseStax() {
-        StaxParser parser = new StaxParser();
-        parser.buildListOfGems(FilePath.FILE_PATH);
-        return parser.getGems();
+    public List<Gem> parseStax() throws DAOException {
+        try {
+            StaxParser parser = new StaxParser();
+            parser.buildListOfGems(FilePath.FILE_PATH);
+            return parser.getGems();
+        }
+        catch (ParseException e){
+            throw new DAOException(e);
+        }
     }
 
     @Override
-    public List<Gem> parseDOM() {
-        DomParser parser = new DomParser();
-        parser.buildListOfGems(FilePath.FILE_PATH);
+    public List<Gem> parseDOM() throws DAOException {
+        DomParser parser;
+        try {
+            parser = new DomParser();
+            parser.buildListOfGems(FilePath.FILE_PATH);
+
         return parser.getGems();
+    } catch (ParseException e) {
+            throw new DAOException(e);
+        }
     }
 }

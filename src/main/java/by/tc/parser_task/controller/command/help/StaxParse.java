@@ -3,9 +3,11 @@ package by.tc.parser_task.controller.command.help;
 import by.tc.parser_task.controller.command.Command;
 import by.tc.parser_task.controller.constant.AttributeKey;
 import by.tc.parser_task.controller.output.PaginationHelper;
+import by.tc.parser_task.dao.exception.DAOException;
 import by.tc.parser_task.entity.Gem;
 import by.tc.parser_task.service.ParseService;
 import by.tc.parser_task.service.ServiceFactory;
+import by.tc.parser_task.service.exception.ServiceException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -23,7 +25,13 @@ public class StaxParse implements Command {
         ServiceFactory factory = ServiceFactory.getInstance();
         ParseService parseService = factory.getParseService();
         HttpSession session = request.getSession();
-        List<Gem> parsedGems = parseService.parseStax();
+        List<Gem> parsedGems = null;
+        try {
+            parsedGems = parseService.parseStax();
+        }
+        catch (ServiceException e) {
+            e.printStackTrace();
+        }
         session.setAttribute(AttributeKey.ALL_GEMS, parsedGems);
         PaginationHelper pagination = new PaginationHelper();
         return pagination.firstOutput(parsedGems);

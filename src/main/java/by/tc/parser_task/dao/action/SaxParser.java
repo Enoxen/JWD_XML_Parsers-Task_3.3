@@ -25,6 +25,8 @@ public class SaxParser extends DefaultHandler {
     }
     @Override
     public void startDocument(){
+
+
         System.out.println("Parsing started");
     }
 

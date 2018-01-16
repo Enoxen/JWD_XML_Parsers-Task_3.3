@@ -1,6 +1,7 @@
 package by.tc.parser_task.dao.action;
 
 import by.tc.parser_task.dao.constant.TagName;
+import by.tc.parser_task.dao.exception.ParseException;
 import by.tc.parser_task.entity.Gem;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -24,14 +25,14 @@ public class DomParser {
     private List<Gem> gems;
     private DocumentBuilder docBuilder;
     private static final Logger logger = LogManager.getLogger(StaxParser.class);
-    public DomParser(){
+    public DomParser() throws ParseException {
         this.gems = new ArrayList<>();
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         try{
             docBuilder = factory.newDocumentBuilder();
         }
         catch (ParserConfigurationException e){
-            e.printStackTrace();
+            logger.error(e.getMessage() + e.getStackTrace());
         }
     }
 
@@ -39,7 +40,7 @@ public class DomParser {
         return gems;
     }
 
-    public void buildListOfGems(String filename){
+    public void buildListOfGems(String filename) throws ParseException {
         logger.info("Started DOM parsing");
         Document doc = null;
         try{
@@ -54,10 +55,10 @@ public class DomParser {
             }
         }
         catch (IOException e){
-            e.printStackTrace();
+            throw new ParseException("problems with finding file in DOM parser", e);
         }
         catch (SAXException e){
-            e.printStackTrace();
+            throw new ParseException("problems with parsing in DOM parser", e);
         }
     }
     private Gem buildGem(Element gemElement){

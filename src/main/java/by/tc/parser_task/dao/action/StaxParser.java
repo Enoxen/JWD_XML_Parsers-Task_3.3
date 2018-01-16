@@ -1,6 +1,7 @@
 package by.tc.parser_task.dao.action;
 
 import by.tc.parser_task.dao.constant.TagName;
+import by.tc.parser_task.dao.exception.ParseException;
 import by.tc.parser_task.entity.Gem;
 
 
@@ -14,6 +15,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import by.tc.parser_task.dao.exception.DAOException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -23,7 +26,6 @@ import org.apache.logging.log4j.Logger;
 public class StaxParser {
     private List<Gem> gems = new ArrayList<>();
     private XMLInputFactory inputFactory;
-   // private static final Logger Logger = LogManager.getLogger(MenuStAXParser.class);
     private static final Logger logger = LogManager.getLogger(StaxParser.class);
 
     public StaxParser(){
@@ -33,7 +35,7 @@ public class StaxParser {
     public List<Gem> getGems(){
         return gems;
     }
-    public void buildListOfGems(String filename){
+    public void buildListOfGems(String filename) throws ParseException {
         logger.info("Started StAX parsing");
         FileInputStream inputStream = null;
         XMLStreamReader reader = null;
@@ -57,10 +59,10 @@ public class StaxParser {
         }
 
         catch (XMLStreamException e){
-            e.printStackTrace();
+            throw new ParseException("problems with xml parsing with StAx", e);
         }
         catch (FileNotFoundException e){
-            e.printStackTrace();
+            throw new ParseException("file not found", e);
         }
         finally {
             try{
@@ -69,7 +71,7 @@ public class StaxParser {
                 }
             }
             catch (IOException e){
-                e.printStackTrace();
+                logger.error(e.getMessage() + e.getStackTrace());
             }
         }
     }

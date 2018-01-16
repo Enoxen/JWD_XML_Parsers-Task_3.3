@@ -12,6 +12,4 @@ public class TagName {
     public static final String SHINE = "shine";
     public static final String TRANSPARENCY = "transparency";
     public static final String VALUE = "value";
-
-
 }

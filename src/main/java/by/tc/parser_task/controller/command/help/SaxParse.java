@@ -7,6 +7,9 @@ import by.tc.parser_task.controller.output.PaginationHelper;
 import by.tc.parser_task.entity.Gem;
 import by.tc.parser_task.service.ParseService;
 import by.tc.parser_task.service.ServiceFactory;
+import by.tc.parser_task.service.exception.ServiceException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -19,6 +22,7 @@ import java.util.List;
  * Created by Y50-70 on 22.11.2017.
  */
 public class SaxParse implements Command {
+    private static final Logger logger = LogManager.getLogger(StaxParse.class);
     @Override
     public List<Gem> execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -27,7 +31,12 @@ public class SaxParse implements Command {
         PaginationFactory paginationFactory = PaginationFactory.getInstance();
 
         HttpSession session = request.getSession(false);
-        List<Gem> parsedGems = parseService.parseSax();
+        List<Gem> parsedGems = null;
+        try {
+            parsedGems = parseService.parseSax();
+        } catch (ServiceException e) {
+            logger.error(e.getMessage() + e.getStackTrace());
+        }
 
         session.setAttribute(AttributeKey.ALL_GEMS, parsedGems);
         PaginationHelper pagination = paginationFactory.getPaginationHelper();
